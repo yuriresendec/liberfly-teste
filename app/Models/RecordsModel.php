@@ -9,11 +9,11 @@ class RecordsModel extends Model
 {
     public function getAllRecords()
     {
-        return DB::connection('mysql')->select('SELECT * FROM liberfly.records');
+        return DB::connection('mysql')->select('SELECT * FROM '. env('DB_SCHEMA') . '.' . env('DB_TABLE'));
     }
 
     public function getRecord(Int $id)
     {
-        return DB::connection('mysql')->select('SELECT * FROM liberfly.records WHERE id = ' . $id);
+        return DB::connection('mysql')->select('SELECT * FROM '. env('DB_SCHEMA') . '.' . env('DB_TABLE') . ' WHERE id = ' . $id);
     }
 }
