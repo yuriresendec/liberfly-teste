@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Teste Processo Seletivo Liberfly",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/token": {
+            "get": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Autenticação do usuário",
+                "operationId": "authenticateUser",
+                "responses": {
+                    "default": {
+                        "description": "Token"
+                    }
+                }
+            }
+        },
+        "/api/records/all": {
+            "get": {
+                "tags": [
+                    "Registro"
+                ],
+                "description": "Lista as informações de todos os registros.",
+                "operationId": "134032919b9d60a006f052d4a9a9f2ef",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "403": {
+                        "description": "Não Autorizado"
+                    },
+                    "500": {
+                        "description": "Erro Interno"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/api/records": {
+            "post": {
+                "tags": [
+                    "Registro"
+                ],
+                "description": "Lista as informações do registro com o id especificado.",
+                "operationId": "bfc384f46e7da5d513bf02844fefc238",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "403": {
+                        "description": "Não Autorizado"
+                    },
+                    "500": {
+                        "description": "Erro Interno"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerToken": {
+                "type": "http",
+                "description": "Token de acesso.",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
